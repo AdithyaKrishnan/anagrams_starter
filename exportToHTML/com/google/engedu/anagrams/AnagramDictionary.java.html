@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>AnagramDictionary.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(0,0,255); }
+.s3 { color: rgb(128,128,128); font-style: italic; }
+.s4 { color: rgb(0,128,0); font-weight: bold; }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+AnagramDictionary.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">com.google.engedu.anagrams; 
+ 
+</span><span class="s0">import </span><span class="s1">java.io.BufferedReader; 
+</span><span class="s0">import </span><span class="s1">java.io.IOException; 
+</span><span class="s0">import </span><span class="s1">java.io.InputStream; 
+</span><span class="s0">import </span><span class="s1">java.io.InputStreamReader; 
+</span><span class="s0">import </span><span class="s1">java.util.ArrayList; 
+</span><span class="s0">import </span><span class="s1">java.util.Random; 
+</span><span class="s0">import </span><span class="s1">java.util.*; 
+</span><span class="s0">public class </span><span class="s1">AnagramDictionary{ 
+ 
+        </span><span class="s0">private static final int </span><span class="s1">MIN_NUM_ANAGRAMS = </span><span class="s2">5</span><span class="s1">; 
+        </span><span class="s0">private static final int </span><span class="s1">DEFAULT_WORD_LENGTH = </span><span class="s2">3</span><span class="s1">; 
+        </span><span class="s0">private static final int </span><span class="s1">MAX_WORD_LENGTH = </span><span class="s2">7</span><span class="s1">; 
+        </span><span class="s0">private </span><span class="s1">Random random = </span><span class="s0">new </span><span class="s1">Random(); 
+    </span><span class="s0">private </span><span class="s1">ArrayList&lt;String&gt; al = </span><span class="s0">new </span><span class="s1">ArrayList&lt;String&gt;(); 
+        </span><span class="s0">public </span><span class="s1">AnagramDictionary(InputStream wordListStream) </span><span class="s0">throws </span><span class="s1">IOException { 
+            BufferedReader in = </span><span class="s0">new </span><span class="s1">BufferedReader(</span><span class="s0">new </span><span class="s1">InputStreamReader(wordListStream)); 
+            String line; 
+ 
+            </span><span class="s0">while</span><span class="s1">((line = in.readLine()) != </span><span class="s0">null</span><span class="s1">) { 
+                String word = line.trim(); 
+                al.add(word); 
+            } 
+        } 
+ 
+        </span><span class="s0">public boolean </span><span class="s1">isGoodWord(String word, String base) { 
+            </span><span class="s0">return true</span><span class="s1">; 
+        } 
+ 
+        </span><span class="s0">public </span><span class="s1">ArrayList&lt;String&gt; getAnagrams(String targetWord) { 
+            ArrayList&lt;String&gt; result = </span><span class="s0">new </span><span class="s1">ArrayList&lt;String&gt;(); 
+            </span><span class="s3">// Collections.sort(al);</span><span class="s1"> 
+            </span><span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">i =</span><span class="s2">0</span><span class="s1">; i &lt; al.size(); i++) { 
+                String res=  al.get(i); 
+                </span><span class="s0">char</span><span class="s1">[] ca = res.toCharArray(); 
+                Arrays.sort(ca); 
+                String nw = </span><span class="s0">new </span><span class="s1">String(ca); 
+                </span><span class="s0">char</span><span class="s1">[] ca2 = targetWord.toCharArray(); 
+                Arrays.sort(ca2); 
+                String nw2 = </span><span class="s0">new </span><span class="s1">String(ca2); 
+                </span><span class="s0">int </span><span class="s1">cmpres=nw.compareTo(nw2); 
+                </span><span class="s0">if</span><span class="s1">(cmpres == </span><span class="s2">0</span><span class="s1">) { 
+                 
+                    result.add(targetWord); 
+                } 
+            } 
+ 
+ 
+ 
+            </span><span class="s0">return </span><span class="s1">result; 
+ 
+        } 
+ 
+        </span><span class="s0">public </span><span class="s1">ArrayList&lt;String&gt; getAnagramsWithOneMoreLetter(String word) { 
+            ArrayList&lt;String&gt; result = </span><span class="s0">new </span><span class="s1">ArrayList&lt;String&gt;(); 
+            </span><span class="s0">return </span><span class="s1">result; 
+            </span><span class="s3">//</span><span class="s1"> 
+ 
+        } 
+ 
+ 
+        </span><span class="s0">public </span><span class="s1">String pickGoodStarterWord() { 
+            </span><span class="s0">return </span><span class="s4">&quot;stop&quot;</span><span class="s1">; 
+        } 
+} 
+</span></pre>
+</body>
+</html>
